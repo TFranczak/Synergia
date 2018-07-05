@@ -3,7 +3,7 @@
 import synergia
 import numpy as np
 
-from run_opts import opts
+from IOTA_opts import opts
 
 lattice_file = """
 beam,
