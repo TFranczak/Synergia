@@ -7,3 +7,7 @@ IOTA simulation with an Electron lens lattice element.
 
 <H3> IOTA_opts.py </H3>
 An options file containing parameters for the IOTA simulation. There are 3 main sections: beam options, simulation options, and electron lens options.
+
+<H4> To Do: </H4>
+- Add parameters for spacecharge in the options file.
+- 
