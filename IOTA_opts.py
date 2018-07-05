@@ -15,6 +15,7 @@ opts.add("dp_over_p", 0.001, "delta p / p")
 opts.add("macro_particles", 10000, "Particles in PIC sim")
 opts.add("turns", 1000, "Amount of turns around synchrotron")
 opts.add("verbosity", 1, "Verbosity")
+opts.add("nonLinearLattice", False, "Toggles between T:chef_propagate and F:chef_map; forces linear elements")
 opts.add("showTuneShift", True, "Shows the lazlett tuneshift")
 
 # e lens
