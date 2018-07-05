@@ -186,13 +186,13 @@ if __name__ == "__main__":
         5 # num_steps
     )
 
-    # get one turn map
-    lattice_simulator = stepper.get_lattice_simulator()
-    map = lattice_simulator.get_linear_one_turn_map()
-    
-    [l, v] = np.linalg.eig(map)
-    for z in l:
-    	print "|z|: ", abs(z), " z: ", z, " turn: ", np.log(z).imag/(2.0*np.pi)
+#    # get one turn map
+#    lattice_simulator = stepper.get_lattice_simulator()
+#    map = lattice_simulator.get_linear_one_turn_map()
+#   
+#    [l, v] = np.linalg.eig(map)
+#    for z in l:
+#    	print "|z|: ", abs(z), " z: ", z, " turn: ", np.log(z).imag/(2.0*np.pi)
 
     #TODO: don't copy this from bunch.py.jinja
     bunch = synergia.optics.generate_matched_bunch_transverse(
@@ -219,10 +219,18 @@ if __name__ == "__main__":
 
     # Create bunch_simulator and add diagnostics to it
     bunch_simulator = synergia.simulation.Bunch_simulator(bunch)
-    bunch_simulator.add_per_step(synergia.bunch.Diagnostics_full2('d_' + str(opts.current) + '_' + str(opts.turns) + '.h5'))
-    bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track('t_' + str(opts.current) + '_' + str(opts.turns) + '.h5', 16))
+    # Format output file name
+    if opts.elens:
+        diag = "d_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
+        track = "t_:" + str(opts.current) + "_" + str(opts.turns) + ".h5"
+    else:
+        diag  = "d_nolens.h5"
+        track = "t_nolens.h5"
+
+    bunch_simulator.add_per_step(synergia.bunch.Diagnostics_full2(diag))
+    bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, 16))
     # bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_particles('particles.h5'), 1)
-    
+
     # Run the simulation
     synergia.simulation.Propagator(stepper).propagate(
         bunch_simulator,
