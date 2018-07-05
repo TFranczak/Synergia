@@ -9,7 +9,7 @@ from IOTA_opts import opts
 # Arguments: refpart: a reference particle for the beam line
 #            opts:    an options file containing information about the simulation
 
-def CalculateTuneshift(refpart, opts):
+def calculateTuneshift(refpart, opts):
     # laslett tune shift
     #
     # Delta_Q = N * r_0 * 2.0 * F*G/ (pi * beta**2 * gamma**3 * emittance95 *B)
@@ -34,7 +34,7 @@ def CalculateTuneshift(refpart, opts):
 #
 #   Simulates particles through IOTA using parameters in the opts file
 #
-if __name__ = "__main__":
+if __name__ == "__main__":
 
     # Ugly way to import a madx file.
     lattice_file = """
