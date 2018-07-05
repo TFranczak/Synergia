@@ -157,9 +157,13 @@ if __name__ == "__main__":
     
     # Sets up the lattice from the MadX file
     lattice = synergia.lattice.MadX_reader().get_lattice('iota', LATTICE_FILE)
+    # Sets element propagation type
     for el in lattice.get_elements():
         if not el.has_string_attribute('extractor_type'):
-            el.set_string_attribute('extractor_type', 'chef_propagate')
+            if opts.nonLinearLattice:
+                el.set_string_attribute('extractor_type', 'chef_propagate')
+            else:
+                el.set_string_attribute('extractor_type', 'chef_map')
     
     # Create elens element if enabled
     if opts.elens:
