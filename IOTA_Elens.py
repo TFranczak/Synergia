@@ -198,20 +198,22 @@ if __name__ = "__main__":
         rms_z=opts.longrms, # z bunch size
         dpop=0.001, # unitless, RMS \frac{\delta p}{p_{tot}}
         num_real_particles=opts.actual_particles, # real particles, used for space charge, impedance, etc
-        num_macro_particles=int(10000.0), # Used for PIC calculations
+        num_macro_particles=int(opts.macro_particles), # Used for PIC calculations
         seed=int(349250524.0)
     )
-    
 
-    # Create Reference particle for tuneshift calculation
+    # Create Reference particle
+    # ONLY used for tuneshift calculations below
     momentum = opts.momentum
     four_momentum = synergia.foundation.Four_momentum(synergia.foundation.pconstants.mp)
     four_momentum.set_momentum(momentum)
     refpart = synergia.foundation.Reference_particle(1, four_momentum)
     
+    # Optional tuneShift
     if opts.showTuneShift:
         print "Laslett tune shift: ", calculateTuneshift(refpart, opts)
 
+    # Create bunch_simulator and add diagnostics to it
     bunch_simulator = synergia.simulation.Bunch_simulator(bunch)
     bunch_simulator.add_per_step(synergia.bunch.Diagnostics_full2('d_' + str(opts.current) + '_' + str(opts.turns) + '.h5'))
     bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track('t_' + str(opts.current) + '_' + str(opts.turns) + '.h5', 16))
