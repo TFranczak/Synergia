@@ -1,5 +1,7 @@
 <H1> Synergia Iota Simulations </H1>
- ![Picture of the IOTA lattice](https://github.com/TFranczak/Synergia/blob/master/IOTA.png "Picture of the IOTA lattice")
+<p>
+     </master/IOTA.png'>
+</p>
 <H3> IOTA_Elens.py </H3>
 IOTA simulation with an Electron lens lattice element.
 
