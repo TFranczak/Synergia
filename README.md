@@ -1,6 +1,6 @@
 <H1> Synergia Iota Simulations </H1>
 <p>
-     </master/IOTA.png'>
+     <img src='IOTA.png'>
 </p>
 <H3> IOTA_Elens.py </H3>
 IOTA simulation with an Electron lens lattice element.
