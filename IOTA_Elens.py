@@ -222,7 +222,7 @@ if __name__ == "__main__":
     # Format output file name
     if opts.elens:
         diag = "d_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
-        track = "t_:" + str(opts.current) + "_" + str(opts.turns) + ".h5"
+        track = "t_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
     else:
         diag  = "d_nolens.h5"
         track = "t_nolens.h5"
