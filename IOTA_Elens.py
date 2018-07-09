@@ -71,7 +71,7 @@ if __name__ == "__main__":
     IOR: MARKER;
     NLL1: MARKER;
     NLL2: MARKER;
-    vIBPMA1L: MONITOR;
+    IBPMA1L: MONITOR;
     IBPMA1R: MONITOR;
     IBPMA2L: MONITOR;
     IBPMA2R: MONITOR;
