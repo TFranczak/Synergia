@@ -2,6 +2,7 @@
 <p>
      <img src='IOTA.png'>
 </p>
+Pictured above is the IOTA lattice. The current lattice file does not have an RF as depicted in the picture.
 <H3> IOTA_Elens.py </H3>
 IOTA simulation with an Electron lens lattice element.
 
