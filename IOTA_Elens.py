@@ -186,17 +186,19 @@ if __name__ == "__main__":
         5 # num_steps
     )
 
-#    # get one turn map
-#    lattice_simulator = stepper.get_lattice_simulator()
-#    map = lattice_simulator.get_linear_one_turn_map()
-#   
-#    [l, v] = np.linalg.eig(map)
-#    for z in l:
-#    	print "|z|: ", abs(z), " z: ", z, " turn: ", np.log(z).imag/(2.0*np.pi)
+    # lattice simulator to create bunch
+    lattice_simulator = stepper.get_lattice_simulator()
 
-    #TODO: don't copy this from bunch.py.jinja
+
+    #map = lattice_simulator.get_linear_one_turn_map() 
+    #[l, v] = np.linalg.eig(map)
+    #for z in l:
+    #	print "|z|: ", abs(z), " z: ", z, " turn: ", np.log(z).imag/(2.0*np.pi)
+
+
+    # Set characteristics of your bunch
     bunch = synergia.optics.generate_matched_bunch_transverse(
-        stepper.get_lattice_simulator(),
+        lattice_simulator,
         emit_x=opts.emittance, # m-rad, RMS
         emit_y=opts.emittance, # m-rad, RMS
         rms_z=opts.longrms, # z bunch size
