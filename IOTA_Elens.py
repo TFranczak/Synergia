@@ -40,7 +40,7 @@ if __name__ == "__main__":
     lattice_file = """
     beam,
       particle=proton,
-      pc=0.07;
+      pc=""" + str(opts.momentum) + """;
     
     DEDGE: DIPEDGE,fint=0.5,h=1.428571428,hgap=0.01;
     D0_045: DRIFT,l=0.045;
