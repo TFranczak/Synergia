@@ -1,6 +1,7 @@
 # IOTA 6-6 Bare
 import synergia
 import numpy as np
+from math import sqrt
 
 from IOTA_opts import opts
 
