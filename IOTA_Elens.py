@@ -167,12 +167,13 @@ if __name__ == "__main__":
     
     # Create elens element if enabled
     if opts.elens:
+        beta = 0.6539 # twiss beta at s = 0
     	current = opts.current     # ampere/m
     	elens_length = opts.length # meters
     
     	elens = synergia.lattice.Lattice_element("elens", "lens")
     	elens.set_double_attribute("l", 0.0)
-    	elens.set_double_attribute("eenergy", 0.01)
+    	elens.set_double_attribute("eenergy", beta * opts.emittance) #0.01
     	elens.set_double_attribute("current", current * elens_length * -1)
     	elens.set_double_attribute("radius", 0.001)
     	elens.set_double_attribute("longrms", opts.longrms)
