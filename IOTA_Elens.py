@@ -173,7 +173,7 @@ if __name__ == "__main__":
     
     	elens = synergia.lattice.Lattice_element("elens", "lens")
     	elens.set_double_attribute("l", 0.0)
-    	elens.set_double_attribute("eenergy", beta * opts.emittance) #0.01
+    	elens.set_double_attribute("eenergy", sqrt(beta * opts.emittance)) #0.01
     	elens.set_double_attribute("current", current * elens_length * -1)
     	elens.set_double_attribute("radius", 0.001)
     	elens.set_double_attribute("longrms", opts.longrms)
