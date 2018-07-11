@@ -22,3 +22,6 @@ opts.add("showTuneShift", False, "Shows the lazlett tuneshift")
 opts.add("elens", True, "Use Elens?")
 opts.add("current", 0.001, "Current of Elens")
 opts.add("length", 0.7, "Physical length of Elens")
+
+# output options
+opts.add("particles_tracked", 8000, "Number of particle for track diagnostic tool")
