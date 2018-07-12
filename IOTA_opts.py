@@ -25,3 +25,4 @@ opts.add("length", 0.7, "Physical length of Elens")
 
 # output options
 opts.add("particles_tracked", 8000, "Number of particle for track diagnostic tool")
+opts.add("output_frequency", "Turn", "Frequency of output; 'Turn' or 'Step'")
