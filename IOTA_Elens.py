@@ -228,8 +228,8 @@ if __name__ == "__main__":
         diag = "d_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
         track = "t_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
     else:
-        diag  = "d_nolens" + str(opts.turn) + ".h5"
-        track = "t_nolens" + str(opts.turn) + ".h5"
+        diag  = "d_nolens" + str(opts.turns) + ".h5"
+        track = "t_nolens" + str(opts.turns) + ".h5"
 
     # bunch_simulator.add_per_step(synergia.bunch.Diagnostics_full2(diag))    
     bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_full2(diag))
