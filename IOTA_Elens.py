@@ -231,8 +231,10 @@ if __name__ == "__main__":
         diag  = "d_nolens" + str(opts.turn) + ".h5"
         track = "t_nolens" + str(opts.turn) + ".h5"
 
-    bunch_simulator.add_per_step(synergia.bunch.Diagnostics_full2(diag))
-    bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
+    # bunch_simulator.add_per_step(synergia.bunch.Diagnostics_full2(diag))    
+    bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_full2(diag))
+    # bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
+    bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
     # bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_particles('particles.h5'), 1)
 
     # Run the simulation
