@@ -248,8 +248,11 @@ if __name__ == "__main__":
         bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
         # bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_particles('particles.h5'), 1)
 
+    propagator = synergia.simulation.Propagator(stepper)    
+    propagator.set_checkpoint_period(opts.checkpoint_period)
+    
     # Run the simulation
-    synergia.simulation.Propagator(stepper).propagate(
+    propagator.propagate(
         bunch_simulator,
         opts.turns, # number of turns
         0, # max_turns, Number of turns to run before writing checkpoint and stopping
