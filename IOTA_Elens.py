@@ -240,8 +240,7 @@ if __name__ == "__main__":
         track = "t_nolens" + str(opts.turns) + ".h5"
 
     # Generates the diagnostic output files
-    if opts.output_frequency == "Step"
-        bunch_simulator.add_per_step(synergia.bunch.Diagnostics_full2(diag))    
+    if opts.output_frequency == "Step":
         bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
     else:
         bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_full2(diag))
