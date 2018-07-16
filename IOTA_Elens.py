@@ -202,7 +202,6 @@ if __name__ == "__main__":
     # lattice simulator to create bunch
     lattice_simulator = stepper.get_lattice_simulator()
 
-
     #map = lattice_simulator.get_linear_one_turn_map() 
     #[l, v] = np.linalg.eig(map)
     #for z in l:
@@ -228,9 +227,15 @@ if __name__ == "__main__":
     four_momentum.set_momentum(momentum)
     refpart = synergia.foundation.Reference_particle(1, four_momentum)
     
-    # Optional tuneShift
-    if opts.showTuneShift:
+
+    if opts.showTuneInfo:
         print "Laslett tune shift: ", calculateTuneshift(refpart, opts)
+
+        # Print tune
+        map = lattice_simulator.get_linear_one_turn_map() 
+        [l, v] = np.linalg.eig(map)
+        for z in l:
+    	    print "|z|: ", abs(z), " z: ", z, " turn: ", np.log(z).imag/(2.0*np.pi)
 
     # Create bunch_simulator and add diagnostics to it
     bunch_simulator = synergia.simulation.Bunch_simulator(bunch)

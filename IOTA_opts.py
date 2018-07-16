@@ -17,7 +17,7 @@ opts.add("turns", 1000, "Amount of turns around synchrotron")
 opts.add("verbosity", 1, "Verbosity")
 opts.add("spacecharge", True, "Toggles between no space charge and 2D open hockney")
 opts.add("nonLinearLattice", False, "Toggles between T:chef_propagate and F:chef_map; forces linear elements")
-opts.add("showTuneShift", False, "Shows the lazlett tuneshift")
+opts.add("showTuneInfo", True, "Shows the lazlett tuneshift")
 
 # e lens
 opts.add("elens", True, "Use Elens?")
