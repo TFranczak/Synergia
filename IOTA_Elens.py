@@ -159,10 +159,13 @@ if __name__ == "__main__":
         f.write(lattice_file)
     
     # Defines the collective effect space charge
-    collective = synergia.collective.Space_charge_2d_open_hockney(
-        synergia.utils.Commxx(True),
-        [32, 32, 32] # grid
-    )
+    if opts.spacecharge:
+        collective = synergia.collective.Space_charge_2d_open_hockney(
+            synergia.utils.Commxx(True),
+            [32, 32, 32] # grid
+        )
+    else:
+        collective = synergia.simulation.Dummy_collective_operator("")
     
     # Sets up the lattice from the MadX file
     lattice = synergia.lattice.MadX_reader().get_lattice('iota', LATTICE_FILE)
@@ -236,8 +239,8 @@ if __name__ == "__main__":
         diag = "d_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
         track = "t_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
     else:
-        diag  = "d_nolens" + str(opts.turns) + ".h5"
-        track = "t_nolens" + str(opts.turns) + ".h5"
+        diag  = "d_nolens_" + str(opts.turns) + ".h5"
+        track = "t_nolens_" + str(opts.turns) + ".h5"
 
     # Generates the diagnostic output files
     if opts.output_frequency == "Step":
