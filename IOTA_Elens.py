@@ -189,8 +189,8 @@ if __name__ == "__main__":
             else:
                 el.set_string_attribute('extractor_type', 'chef_map')
         # 
-        if elem.get_name()[0:5] == "tmark":
-            elem.set_string_attribute("force_diagnostics", "true")
+        if el.get_name()[0:5] == "tmark":
+            el.set_string_attribute("force_diagnostics", "true")
     
     # Create elens element if enabled
     if opts.elens:
@@ -235,7 +235,6 @@ if __name__ == "__main__":
     four_momentum = synergia.foundation.Four_momentum(synergia.foundation.pconstants.mp)
     four_momentum.set_momentum(momentum)
     refpart = synergia.foundation.Reference_particle(1, four_momentum)
-    
 
     if opts.showTuneInfo:
         print "Laslett tune shift: ", calculateTuneshift(refpart, opts)
