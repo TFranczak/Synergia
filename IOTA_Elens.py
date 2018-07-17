@@ -259,11 +259,11 @@ if __name__ == "__main__":
     # Generates the diagnostic output files
     if opts.output_frequency == "Step":
         bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
-    elseif opts.output_frequency == "Turn":
+    else if opts.output_frequency == "Turn":
         bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_full2(diag))
         bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
         # bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_particles('particles.h5'), 1)
-    elseif opts.output_frequency == "Mark":
+    else if opts.output_frequency == "Mark":
         bunch_simulator.add_per_forced_diagnostics_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
         bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
 
