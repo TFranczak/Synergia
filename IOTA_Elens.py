@@ -188,6 +188,9 @@ if __name__ == "__main__":
                 el.set_string_attribute('extractor_type', 'chef_propagate')
             else:
                 el.set_string_attribute('extractor_type', 'chef_map')
+        # 
+        if elem.get_name()[0:5] == "tmark":
+            elem.set_string_attribute("force_diagnostics", "true")
     
     # Create elens element if enabled
     if opts.elens:
@@ -213,12 +216,6 @@ if __name__ == "__main__":
 
     # lattice simulator to create bunch
     lattice_simulator = stepper.get_lattice_simulator()
-
-    #map = lattice_simulator.get_linear_one_turn_map() 
-    #[l, v] = np.linalg.eig(map)
-    #for z in l:
-    #	print "|z|: ", abs(z), " z: ", z, " turn: ", np.log(z).imag/(2.0*np.pi)
-
 
     # Set characteristics of your bunch
     bunch = synergia.optics.generate_matched_bunch_transverse(
@@ -262,10 +259,13 @@ if __name__ == "__main__":
     # Generates the diagnostic output files
     if opts.output_frequency == "Step":
         bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
-    else:
+    elseif opts.output_frequency == "Turn":
         bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_full2(diag))
         bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
         # bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_particles('particles.h5'), 1)
+    elseif opts.output_frequency == "Mark":
+        bunch_simulator.add_per_forced_diagnostics_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
+        bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
 
     propagator = synergia.simulation.Propagator(stepper)    
     propagator.set_checkpoint_period(opts.checkpoint_period)
