@@ -9,6 +9,10 @@
 import synergia
 import numpy as np
 from math import sqrt
+from mpi4py import MPI
+
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
 
 from IOTA_opts import opts
 
@@ -188,8 +192,9 @@ if __name__ == "__main__":
                 el.set_string_attribute('extractor_type', 'chef_propagate')
             else:
                 el.set_string_attribute('extractor_type', 'chef_map')
-        # 
-        if el.get_name()[0:5] == "TMARK":
+        
+        # Adds force diagnostics to the TMARKs
+        if el.get_name()[0:5] == "tmark":
             el.set_string_attribute("force_diagnostics", "True")
     
     # Create elens element if enabled
@@ -236,14 +241,16 @@ if __name__ == "__main__":
     four_momentum.set_momentum(momentum)
     refpart = synergia.foundation.Reference_particle(1, four_momentum)
 
-    if opts.showTuneInfo:
-        print "Laslett tune shift: ", calculateTuneshift(refpart, opts)
+    # Shows the tune and tuneshift
+    if rank == 0:
+        if opts.showTuneInfo:
+            print "Laslett tune shift: ", calculateTuneshift(refpart, opts)
 
-        # Print tune
-        map = lattice_simulator.get_linear_one_turn_map() 
-        [l, v] = np.linalg.eig(map)
-        for z in l:
-    	    print "|z|: ", abs(z), " z: ", z, " turn: ", np.log(z).imag/(2.0*np.pi)
+            # Print tune
+            map = lattice_simulator.get_linear_one_turn_map() 
+            [l, v] = np.linalg.eig(map)
+            for z in l:
+                print "|z|: ", abs(z), " z: ", z, " tune: ", np.log(z).imag/(2.0*np.pi)
 
     # Create bunch_simulator and add diagnostics to it
     bunch_simulator = synergia.simulation.Bunch_simulator(bunch)

@@ -17,7 +17,7 @@ opts.add("turns", 1000, "Amount of turns around synchrotron")
 opts.add("verbosity", 1, "Verbosity")
 opts.add("spacecharge", True, "Toggles between no space charge and 2D open hockney")
 opts.add("nonLinearLattice", False, "Toggles between T:chef_propagate and F:chef_map; forces linear elements")
-opts.add("showTuneInfo", True, "Shows the lazlett tuneshift")
+opts.add("showTuneInfo", False, "Shows tune and tuneshift")
 
 # e lens
 opts.add("elens", True, "Use Elens?")
@@ -26,5 +26,5 @@ opts.add("length", 0.7, "Physical length of Elens")
 
 # output options
 opts.add("particles_tracked", 8000, "Number of particle for track diagnostic tool")
-opts.add("output_frequency", "Turn", "Frequency of output; 'Turn', 'Step', or 'Mark'")
+opts.add("output_frequency", "Mark", "Frequency of output; 'Turn', 'Step', or 'Mark'")
 opts.add("checkpoint_period", 0, "Number of turns between checkpoints. 0 for no checkpoints")
