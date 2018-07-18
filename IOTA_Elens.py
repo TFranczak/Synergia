@@ -11,6 +11,7 @@ import numpy as np
 from math import sqrt
 from mpi4py import MPI
 
+# Used solely for output formatting
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 
@@ -20,17 +21,16 @@ from IOTA_opts import opts
 # Use: Calculates the tuneshift using Laslett calculations
 # Arguments: refpart: a reference particle for the beam line
 #            opts:    an options file containing information about the simulation
+#
+# laslett tune shift
+# Delta_Q = N * r_0 * 2.0 * F*G/ (pi * beta**2 * gamma**3 * emittance95 *B)
+#
+# F=laslett coefficient=0.5 for circular beam
+# G=Form factor for transverse distribution = 2.0 for gaussian beam
+# B=Bunching factor = mean/peak longitudinal density ~0.3
+# emittance95 = 4*sigma**2/beta
 
 def calculateTuneshift(refpart, opts):
-    # laslett tune shift
-    #
-    # Delta_Q = N * r_0 * 2.0 * F*G/ (pi * beta**2 * gamma**3 * emittance95 *B)
-    #
-    # F=laslett coefficient=0.5 for circular beam
-    # G=Form factor for transverse distribution = 2.0 for gaussian beam
-    # B=Bunching factor = mean/peak longitudinal density ~0.3
-    # emittance95 = 4*sigma**2/beta
-
     beta = refpart.get_beta()
     gamma = refpart.get_gamma()
 
