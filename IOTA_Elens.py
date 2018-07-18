@@ -190,7 +190,7 @@ if __name__ == "__main__":
                 el.set_string_attribute('extractor_type', 'chef_map')
         # 
         if el.get_name()[0:5] == "TMARK":
-            el.set_string_attribute("force_diagnostics", "true")
+            el.set_string_attribute("force_diagnostics", "True")
     
     # Create elens element if enabled
     if opts.elens:
