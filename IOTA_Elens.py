@@ -264,7 +264,7 @@ if __name__ == "__main__":
         # bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_particles('particles.h5'), 1)
     elif opts.output_frequency == "Mark":
         bunch_simulator.add_per_forced_diagnostics_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
-        bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
+        bunch_simulator.add_per_forced_diagnostics_step(synergia.bunch.Diagnostics_full2(diag))
 
     propagator = synergia.simulation.Propagator(stepper)    
     propagator.set_checkpoint_period(opts.checkpoint_period)
