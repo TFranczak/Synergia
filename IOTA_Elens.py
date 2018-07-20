@@ -72,7 +72,7 @@ def calculateElensTuneshift(opts):
     
     # Calculate electron beta and gamma
     electron_kinetic_energy = 0.00001 # [10 KeV]
-    electron_energy
+    electron_energy = electron_kinetic_energy + m_e
     gamma_e = electron_energy/m_e
     beta_e = sqrt(gamma_e**2 - 1.0)/gamma_e
     
