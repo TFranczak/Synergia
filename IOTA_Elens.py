@@ -41,6 +41,45 @@ def calculateTuneshift(refpart, opts):
 
     return laslett
 
+# CalculateElensTuneshift
+# Use: Calculates the elens tuneshift using a formula derived by Eric Stern
+# Arguments: refpart: a reference particle for the beam line
+#            opts:    an options file containing information about the simulation
+#
+
+def calculateElensTuneshift(opts):
+    # physical constants
+    r_p = synergia.foundation.pconstants.rp
+    m_e = synergia.foundation.pconstants.me
+    m_p = synergia.foundation.pconstants.mp
+    c = synergia.foundation.pconstants.c
+    e = synergia.foundation.pconstants.e
+    
+    # parameters for elens
+    J = opts.current # [A]
+    L = opts.length # [m]
+    emittance = opts.emittance # [m rad]
+    twissbeta = 0.6539         # calculated from plot of beta functions
+    rmsradius = sqrt(emittance * twissbeta) # [m]
+    
+    # Calculate Energy of proton beam:
+    beam_energy = sqrt ( m_p**2 + opts.momentum**2 ) # [GeV]
+    beam_kinetic_energy = beam_energy - m_p          # [GeV]
+    
+    # Calculate beta and gamma of proton beam
+    gamma_p = beam_energy / m_p
+    beta_p = sqrt(gamma_p**1 - 1.0)/gamma_p # [m]
+    
+    # Calculate electron beta and gamma
+    electron_kinetic_energy = 0.00001 # [10 KeV]
+    electron_energy
+    gamma_e = electron_energy/m_e
+    beta_e = sqrt(gamma_e**2 - 1.0)/gamma_e
+    
+    # "k" of electron lens kick
+    # assume proton traveling at nominal momentum so beta_p is the same as beta_b.
+    k = 2.0 * (J * L * r_p * (1 + beta_e*beta_p))/(e * beta_e * beta_p**2 * gamma_p * c) * (1/(2*rmsradius**2))
+    return k
 
 #   IOTA simulator main
 #
@@ -251,6 +290,9 @@ if __name__ == "__main__":
             [l, v] = np.linalg.eig(map)
             for z in l:
                 print "|z|: ", abs(z), " z: ", z, " tune: ", np.log(z).imag/(2.0*np.pi)
+                
+            if opts.elens:
+                print "Elens tuneshift: ", calculateElensTuneshift(opts)
 
     # Create bunch_simulator and add diagnostics to it
     bunch_simulator = synergia.simulation.Bunch_simulator(bunch)
