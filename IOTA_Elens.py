@@ -79,7 +79,8 @@ def calculateElensTuneshift(opts):
     # "k" of electron lens kick
     # assume proton traveling at nominal momentum so beta_p is the same as beta_b.
     k = 2.0 * (J * L * r_p * (1 + beta_e*beta_p))/(e * beta_e * beta_p**2 * gamma_p * c) * (1/(2*rmsradius**2))
-    return k
+    dQ = (1/(4*np.pi)) * twissbeta * k
+    return dQ
 
 #   IOTA simulator main
 #
