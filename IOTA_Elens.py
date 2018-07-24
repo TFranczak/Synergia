@@ -265,13 +265,13 @@ IOTA: LINE=(IOR,TMARK1,D0_945,IBPMB2R,D0_1075,QMB4R,D0_13,QMB5R,D0_13,QMB6R,D0_3
     # Set characteristics of your bunch
     bunch = synergia.optics.generate_matched_bunch_transverse(
         lattice_simulator,
-        emit_x=opts.emittance, # m-rad, RMS
-        emit_y=opts.emittance, # m-rad, RMS
-        rms_z=opts.longrms, # z bunch size
-        dpop=0.001, # unitless, RMS \frac{\delta p}{p_{tot}}
-        num_real_particles=opts.actual_particles, # real particles, used for space charge, impedance, etc
-        num_macro_particles=int(opts.macro_particles), # Used for PIC calculations
-        seed=int(349250524.0)
+        emit_x = opts.emittance, # m-rad, RMS
+        emit_y = opts.emittance, # m-rad, RMS
+        rms_z  = opts.longrms, # z bunch size
+        dpop   = opts.dp_over_p, # unitless, RMS \frac{\delta p}{p_{tot}}
+        num_real_particles  = opts.actual_particles, # real particles, used for space charge, impedance, etc
+        num_macro_particles = int(opts.macro_particles), # Used for PIC calculations
+        seed = int(349250524.0)
     )
 
     # Create Reference particle
