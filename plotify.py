@@ -14,14 +14,13 @@ if __name__ == "__main__":
     amp1 = sys.argv[1].split('_')[1]
     amp2 = sys.argv[2].split('_')[1]
 
-
     # Plot x emittance from both -----------------------------------
     plt.xlabel("Distance (m)")
     plt.ylabel("Emittance (m)")
     plt.title("X Emittance for " + amp1 + " and " + amp2 + " VS Distance")
 
-    plt.plot(h5_1.get("s"), h5_1.get("emitx"), label='X Emit for ' + sys.argv[1].split('_')[1])
-    plt.plot(h5_2.get("s"), h5_2.get("emitx"), label='X Emit for ' + sys.argv[2].split('_')[1])
+    plt.plot(h5_1.get("s"), h5_1.get("emitx"), label='X Emit for ' + amp1)
+    plt.plot(h5_2.get("s"), h5_2.get("emitx"), label='X Emit for ' + amp2)
     plt.tight_layout()
     plt.legend()
     plt.show()
@@ -31,9 +30,31 @@ if __name__ == "__main__":
     plt.ylabel("Emittance (m)")
     plt.title("Y Emittance for " + amp1 + " and " + amp2 + " VS Distance")
 
-    plt.plot(h5_1.get("s"), h5_1.get("emity"), label='Y Emit for ' + sys.argv[1].split('_')[1])
-    plt.plot(h5_2.get("s"), h5_2.get("emity"), label='Y Emit for ' + sys.argv[2].split('_')[1])
+    plt.plot(h5_1.get("s"), h5_1.get("emity"), label='Y Emit for ' + amp1)
+    plt.plot(h5_2.get("s"), h5_2.get("emity"), label='Y Emit for ' + amp2)
     plt.tight_layout()
     plt.legend()
     plt.show()
 
+    # Plot x std from both ------------------------------------------
+    plt.xlabel("Distance (m)")
+    plt.ylabel("RMS (m)")
+    plt.title("X RMS for " + amp1 + " and " + amp2 + " VS Distance")
+
+    plt.plot(h5_1.get("s"), h5_1.get("std")[0,:], label='X RMS for ' + amp1)
+    plt.plot(h5_2.get("s"), h5_2.get("std")[0,:], label='X RMS for ' + amp2)
+    plt.tight_layout()
+    plt.legend()
+    plt.show()
+
+
+    # Plot x std from both ------------------------------------------
+    plt.xlabel("Distance (m)")
+    plt.ylabel("Emittance (m)")
+    plt.title("Y RMS for " + amp1 + " and " + amp2 + " VS Distance")
+
+    plt.plot(h5_1.get("s"), h5_1.get("std")[1,:], label='Y RMS for ' + amp1)
+    plt.plot(h5_2.get("s"), h5_2.get("std")[1,:], label='Y RMS for ' + amp2)
+    plt.tight_layout()
+    plt.legend()
+    plt.show()
