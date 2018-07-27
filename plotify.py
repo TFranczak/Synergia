@@ -23,6 +23,7 @@ if __name__ == "__main__":
     plt.plot(h5_2.get("s"), h5_2.get("emitx"), label='X Emit for ' + amp2)
     plt.tight_layout()
     plt.legend()
+    plt.savefig(str(amp1) + "_" + str(amp2) + "_emitx.png")
     plt.show()
 
     # Plot y emittance from both ------------------------------------
@@ -34,6 +35,7 @@ if __name__ == "__main__":
     plt.plot(h5_2.get("s"), h5_2.get("emity"), label='Y Emit for ' + amp2)
     plt.tight_layout()
     plt.legend()
+    plt.savefig(str(amp1) + "_" + str(amp2) + "_emity.png")
     plt.show()
 
     # Plot x std from both ------------------------------------------
