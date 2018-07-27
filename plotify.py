@@ -3,11 +3,19 @@ import h5py
 import sys
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print "Usage: plotify.py <h5 file> <h5 file>"
-        Exit()
+    if len(sys.argv) < 3:
+        raise ValueError('Usage: plotify.py <h5 file> <h5 file>')
 
-
-    # Open first file
+    # Open hdf5 files
     h5_1 = h5py.File(sys.argv[1])
     h5_2 = h5py.File(sys.argv[2])
+
+    plt.xlabel("Distance (m)")
+    plt.ylabel("Emittance (m)")
+
+    # Plot x emittance from both
+    line1 = plt.plot(h5_1.get("s"), h5_1.get("emitx"), label='X Emit for ' + sys.argv[1].split('_')[1])
+    line2 = plt.plot(h5_2.get("s"), h5_2.get("emitx"), label='X Emit for ' + sys.argv[2].split('_')[1])
+    plt.tight_layout()
+    plt.legend()
+    plt.show()
