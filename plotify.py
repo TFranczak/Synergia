@@ -47,6 +47,7 @@ if __name__ == "__main__":
     plt.plot(h5_2.get("s"), h5_2.get("std")[0,:], label='X RMS for ' + amp2)
     plt.tight_layout()
     plt.legend()
+    plt.savefig(str(amp1) + "_" + str(amp2) + "_stdX.png")
     plt.show()
 
 
@@ -59,4 +60,5 @@ if __name__ == "__main__":
     plt.plot(h5_2.get("s"), h5_2.get("std")[1,:], label='Y RMS for ' + amp2)
     plt.tight_layout()
     plt.legend()
+    plt.savefig(str(amp1) + "_" + str(amp2) + "_stdY.png")
     plt.show()
