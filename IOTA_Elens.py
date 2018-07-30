@@ -299,7 +299,7 @@ IOTA: LINE=(IOR,TMARK1,D0_945,IBPMB2R,D0_1075,QMB4R,D0_13,QMB5R,D0_13,QMB6R,D0_3
     bunch_simulator = synergia.simulation.Bunch_simulator(bunch)
     
     # Format output file name
-    if not opts.output_flags = "":
+    if opts.output_flags != "":
         output_flags = "_" + opts.output_flags
     if opts.spacecharge:
         if opts.elens:
