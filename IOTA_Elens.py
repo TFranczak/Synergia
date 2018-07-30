@@ -297,17 +297,20 @@ IOTA: LINE=(IOR,TMARK1,D0_945,IBPMB2R,D0_1075,QMB4R,D0_13,QMB5R,D0_13,QMB6R,D0_3
 
     # Create bunch_simulator and add diagnostics to it
     bunch_simulator = synergia.simulation.Bunch_simulator(bunch)
+    
     # Format output file name
+    if opts.output_flags != "":
+        output_flags = "_" + opts.output_flags
     if opts.spacecharge:
         if opts.elens:
-            diag = "d_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
-            track = "t_" + str(opts.current) + "_" + str(opts.turns) + ".h5"
+            diag = "d_" + str(opts.current) + "_" + str(opts.turns) + output_flags + ".h5"
+            track = "t_" + str(opts.current) + "_" + str(opts.turns) + output_flags + ".h5"
         else:
-            diag  = "d_nolens_" + str(opts.turns) + ".h5"
-            track = "t_nolens_" + str(opts.turns) + ".h5"
+            diag  = "d_nolens_" + str(opts.turns) + output_flags + ".h5"
+            track = "t_nolens_" + str(opts.turns) + output_flags + ".h5"
     else:
-        diag  = "d_nosc_" + str(opts.turns) + ".h5"
-        track = "t_nosc_" + str(opts.turns) + ".h5"
+        diag  = "d_nosc_" + str(opts.turns) + output_flags + ".h5"
+        track = "t_nosc_" + str(opts.turns) + output_flags + ".h5"
 
     # Generates the diagnostic output files
     if opts.output_frequency == "Step":
