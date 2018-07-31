@@ -315,10 +315,10 @@ IOTA: LINE=(IOR,TMARK1,D0_945,IBPMB2R,D0_1075,QMB4R,D0_13,QMB5R,D0_13,QMB6R,D0_3
     # Generates the diagnostic output files
     if opts.output_frequency == "Step":
         bunch_simulator.add_per_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
+        bunch_simulator.add_per_step(synergia.bunch.Diagnostics_full2(diag))
     elif opts.output_frequency == "Turn":
         bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_full2(diag))
         bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
-        # bunch_simulator.add_per_turn(synergia.bunch.Diagnostics_particles('particles.h5'), 1)
     elif opts.output_frequency == "Mark":
         bunch_simulator.add_per_forced_diagnostics_step(synergia.bunch.Diagnostics_bulk_track(track, opts.particles_tracked))
         bunch_simulator.add_per_forced_diagnostics_step(synergia.bunch.Diagnostics_full2(diag))
