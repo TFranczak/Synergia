@@ -19,8 +19,8 @@ if __name__ == "__main__":
     plt.ylabel("Emittance (m)")
     plt.title("X Emittance for " + amp1 + " and " + amp2 + " VS Distance")
 
-    plt.plot(h5_1.get("s"), h5_1.get("emitx"), label='X Emit for ' + amp1)
-    plt.plot(h5_2.get("s"), h5_2.get("emitx"), label='X Emit for ' + amp2)
+    plt.plot(h5_1.get("s"), h5_1.get("emitx"), label='X Emit for ' + amp1, color="orange")
+    plt.plot(h5_2.get("s"), h5_2.get("emitx"), label='X Emit for ' + amp2, color="blue")
     plt.tight_layout()
     plt.legend()
     plt.savefig(str(amp1) + "_" + str(amp2) + "_emitx.png")
@@ -31,8 +31,8 @@ if __name__ == "__main__":
     plt.ylabel("Emittance (m)")
     plt.title("Y Emittance for " + amp1 + " and " + amp2 + " VS Distance")
 
-    plt.plot(h5_1.get("s"), h5_1.get("emity"), label='Y Emit for ' + amp1)
-    plt.plot(h5_2.get("s"), h5_2.get("emity"), label='Y Emit for ' + amp2)
+    plt.plot(h5_1.get("s"), h5_1.get("emity"), label='Y Emit for ' + amp1, color="orange")
+    plt.plot(h5_2.get("s"), h5_2.get("emity"), label='Y Emit for ' + amp2, color="blue")
     plt.tight_layout()
     plt.legend()
     plt.savefig(str(amp1) + "_" + str(amp2) + "_emity.png")
@@ -43,8 +43,8 @@ if __name__ == "__main__":
     plt.ylabel("RMS (m)")
     plt.title("X RMS for " + amp1 + " and " + amp2 + " VS Distance")
 
-    plt.plot(h5_1.get("s"), h5_1.get("std")[0,:], label='X RMS for ' + amp1)
-    plt.plot(h5_2.get("s"), h5_2.get("std")[0,:], label='X RMS for ' + amp2)
+    plt.plot(h5_1.get("s"), h5_1.get("std")[0,:], label='X RMS for ' + amp1, color="orange")
+    plt.plot(h5_2.get("s"), h5_2.get("std")[0,:], label='X RMS for ' + amp2, color="blue")
     plt.tight_layout()
     plt.legend()
     plt.savefig(str(amp1) + "_" + str(amp2) + "_stdX.png")
@@ -56,8 +56,8 @@ if __name__ == "__main__":
     plt.ylabel("RMS (m)")
     plt.title("Y RMS for " + amp1 + " and " + amp2 + " VS Distance")
 
-    plt.plot(h5_1.get("s"), h5_1.get("std")[1,:], label='Y RMS for ' + amp1)
-    plt.plot(h5_2.get("s"), h5_2.get("std")[1,:], label='Y RMS for ' + amp2)
+    plt.plot(h5_1.get("s"), h5_1.get("std")[1,:], label='Y RMS for ' + amp1, color="orange")
+    plt.plot(h5_2.get("s"), h5_2.get("std")[1,:], label='Y RMS for ' + amp2, color="blue")
     plt.tight_layout()
     plt.legend()
     plt.savefig(str(amp1) + "_" + str(amp2) + "_stdY.png")
