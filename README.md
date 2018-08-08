@@ -16,8 +16,7 @@ IOTA simulation with an Electron lens lattice element. this is a simple lattice 
 An options file containing parameters for the IOTA simulation. There are 3 main sections: beam options, simulation options, and electron lens options.
 
 <H3> plotify.py </H3>
-Plots the output from running the simulations. This will create graphs for emittance and rms.
-Usage: python plotify.py <diagnostic file> <diagnostic file>
-
+<p> Plots the output from running the simulations. This will create graphs for emittance and rms. </p>
+<p> Usage: python plotify.py &lt;diagnostic file&gt; &lt;diagnostic file&gt; </p>
 <H4> To Do: </H4>
 - Gather Results
