@@ -7,6 +7,7 @@ Pictured above is the IOTA lattice. The current lattice file does not have an RF
 <H3> Synergia Resources </H3>
 <p> Synergia documentation and source: https://cdcvs.fnal.gov/redmine/projects/synergia2/wiki/Wiki </p>
 <p> Computing resources with Synergia prebuilt: https://jupyter.radiasoft.com </p>
+<p> Run with: synergia IOTA_Elens.py</p>
 <p> Can run in parallel using: mpirun -np &lt;num processes&gt; synergia IOTA_Elens.py</p>
 
 <H3> IOTA_Elens.py </H3>
